@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Renato_Hack_DR4_TP1"
