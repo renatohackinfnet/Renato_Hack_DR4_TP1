@@ -23,14 +23,19 @@ class TelaResultado : AppCompatActivity() {
         viewModelFactory = TelaResultadoViewModelFactory(this, this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(TelaResultadoViewModel::class.java)
 
-        val filesObserver = Observer<Array<String>> { files ->
-            // Update the UI, in this case, a TextView.
+//        val filesObserver = Observer<Array<String>> { files ->
+//            // Update the UI, in this case, a TextView.
+//            if (files.isNotEmpty()){
+//                listViewLocation.adapter =
+//                    ArrayAdapter(this, android.R.layout.simple_list_item_1, files)
+//            }
+//        }
+        viewModel.files.observe(this, Observer{ files ->
             if (files.isNotEmpty()){
                 listViewLocation.adapter =
                     ArrayAdapter(this, android.R.layout.simple_list_item_1, files)
             }
-        }
-        viewModel.files.observe(this, filesObserver)
+        })
 
         viewModel.getFiles()
 

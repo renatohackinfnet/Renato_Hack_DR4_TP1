@@ -2,11 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.renatohack.renato_hack_dr4_tp1">
     <!-- NORMAIS -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- PERIGOSAS -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- PERIGOSAS -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <permission
+        android:name="com.renatohack.renato_hack_dr4_tp1.MINHA_PERMISSAO"
+        android:description="@string/descr_perm"
+        android:label="@string/label_perm"
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:protectionLevel="dangerous" />
+
 
     <application
         android:allowBackup="true"
@@ -15,14 +24,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Renato_Hack_DR4_TP1">
-        <activity android:name=".SegundaAtividade.TelaResultado"></activity>
+
+
         <activity android:name=".PrimeiraAtividade.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".SegundaAtividade.TelaResultado"
+                    android:permission="com.renatohack.renato_hack_dr4_tp1.MINHA_PERMISSAO">
+            <intent-filter>
+                <action android:name="android.intent.action.SegundaAtividade" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
